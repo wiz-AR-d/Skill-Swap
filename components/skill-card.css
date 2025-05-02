@@ -1,0 +1,161 @@
+.skill-card {
+  background-color: white;
+  border-radius: var(--radius);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 1.25rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.skill-card.explore {
+  cursor: pointer;
+}
+
+.skill-card.explore:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.skill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.skill-title {
+  font-size: 1.125rem;
+  margin-bottom: 0.25rem;
+  flex: 1;
+}
+
+.skill-price {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-left: 0.5rem;
+}
+
+.skill-category {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--primary-color);
+  background-color: rgba(79, 70, 229, 0.1);
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  margin-bottom: 0.75rem;
+}
+
+.skill-description {
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+  flex: 1;
+}
+
+.skill-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.skill-availability {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+}
+
+.availability-label {
+  font-weight: 500;
+  margin-right: 0.25rem;
+}
+
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 2rem;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--muted-foreground);
+}
+
+.modal-price {
+  display: flex;
+  align-items: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+}
+
+.modal-details {
+  margin-bottom: 2rem;
+}
+
+.modal-description {
+  white-space: pre-line;
+}
+
+.modal-request h3 {
+  margin-bottom: 1rem;
+}
+
+.modal-request textarea {
+  width: 100%;
+  resize: vertical;
+  margin-bottom: 1rem;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    padding: 1.5rem;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+  }
+
+  .modal-actions .btn {
+    width: 100%;
+  }
+}

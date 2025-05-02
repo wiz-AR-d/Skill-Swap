@@ -1,0 +1,109 @@
+.admin-container {
+  padding: 2rem 1rem;
+  max-width: var(--container-width);
+  margin: 0 auto;
+}
+
+.admin-header {
+  margin-bottom: 2rem;
+}
+
+.admin-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 1.5rem;
+}
+
+.tab-button {
+  padding: 0.75rem 1.5rem;
+  background: none;
+  border: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--muted-foreground);
+  cursor: pointer;
+  position: relative;
+}
+
+.tab-button.active {
+  color: var(--primary-color);
+}
+
+.tab-button.active::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--primary-color);
+}
+
+.admin-table-container {
+  background-color: white;
+  border-radius: var(--radius);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.admin-table th {
+  font-weight: 600;
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+}
+
+.admin-table tr:last-child td {
+  border-bottom: none;
+}
+
+.status-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  text-transform: capitalize;
+}
+
+.status-badge.active {
+  background-color: var(--success-color);
+  color: white;
+}
+
+.status-badge.inactive {
+  background-color: var(--warning-color);
+  color: white;
+}
+
+.status-badge.banned {
+  background-color: var(--error-color);
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .admin-tabs {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .tab-button {
+    padding: 0.75rem 1rem;
+  }
+
+  .admin-table th,
+  .admin-table td {
+    padding: 0.75rem;
+  }
+}
