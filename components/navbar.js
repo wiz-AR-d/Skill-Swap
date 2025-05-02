@@ -4,12 +4,10 @@ import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useAuth } from "@/context/auth-context"
-import { useTheme } from "@/context/theme-context"
 import "./navbar.css"
 
 export default function Navbar() {
   const { isAuthenticated, user, logout } = useAuth()
-  const { theme, toggleTheme } = useTheme()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const pathname = usePathname()
 
@@ -58,9 +56,6 @@ export default function Navbar() {
                 </Link>
               </div>
               <div className="navbar-auth">
-                <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
-                  {theme === "light" ? "🌙" : "☀️"}
-                </button>
                 <div className="user-menu">
                   <div className="user-avatar">
                     {user?.avatar ? (
@@ -87,9 +82,6 @@ export default function Navbar() {
             </>
           ) : (
             <div className="navbar-auth">
-              <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
-                {theme === "light" ? "🌙" : "☀️"}
-              </button>
               <Link href="/login" className="btn btn-secondary" onClick={closeMobileMenu}>
                 Login
               </Link>

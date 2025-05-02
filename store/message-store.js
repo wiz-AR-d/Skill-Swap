@@ -133,6 +133,21 @@ export const useMessageStore = create((set) => ({
       messages: state.messages.map((thread) => (thread.id === updatedThread.id ? updatedThread : thread)),
     })),
 
+  // Add a new message to an existing thread
+  addMessageToThread: (threadId, newMessage) =>
+    set((state) => ({
+      messages: state.messages.map((thread) => {
+        if (thread.id === threadId) {
+          return {
+            ...thread,
+            lastMessageAt: new Date().toISOString(),
+            messages: [...thread.messages, newMessage],
+          }
+        }
+        return thread
+      }),
+    })),
+
   // Remove a message thread
   removeMessage: (messageId) =>
     set((state) => ({

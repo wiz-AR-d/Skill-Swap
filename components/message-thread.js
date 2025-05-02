@@ -6,7 +6,7 @@ import { useWalletStore } from "@/store/wallet-store"
 import "./message-thread.css"
 
 export default function MessageThread({ thread }) {
-  const { updateMessageThread } = useMessageStore()
+  const { addMessageToThread } = useMessageStore()
   const { addTransaction } = useWalletStore()
   const [newMessage, setNewMessage] = useState("")
   const [isLoading, setIsLoading] = useState(false)
@@ -22,21 +22,14 @@ export default function MessageThread({ thread }) {
       // Mock API call - in a real app, this would call an API
       await new Promise((resolve) => setTimeout(resolve, 1000))
 
-      const updatedThread = {
-        ...thread,
-        lastMessageAt: new Date().toISOString(),
-        messages: [
-          ...thread.messages,
-          {
-            id: Date.now().toString(),
-            sender: "user",
-            text: newMessage,
-            timestamp: new Date().toISOString(),
-          },
-        ],
+      const newMessageObj = {
+        id: Date.now().toString(),
+        sender: "user",
+        text: newMessage,
+        timestamp: new Date().toISOString(),
       }
 
-      updateMessageThread(updatedThread)
+      addMessageToThread(thread.id, newMessageObj)
       setNewMessage("")
     } catch (error) {
       console.error("Error sending message:", error)
@@ -52,22 +45,14 @@ export default function MessageThread({ thread }) {
       // Mock API call - in a real app, this would call an API
       await new Promise((resolve) => setTimeout(resolve, 1000))
 
-      const updatedThread = {
-        ...thread,
-        status: "accepted",
-        lastMessageAt: new Date().toISOString(),
-        messages: [
-          ...thread.messages,
-          {
-            id: Date.now().toString(),
-            sender: "system",
-            text: "Request accepted! You can now start the lesson.",
-            timestamp: new Date().toISOString(),
-          },
-        ],
+      const systemMessage = {
+        id: Date.now().toString(),
+        sender: "system",
+        text: "Request accepted! You can now start the lesson.",
+        timestamp: new Date().toISOString(),
       }
 
-      updateMessageThread(updatedThread)
+      addMessageToThread(thread.id, systemMessage)
 
       // Add transaction for earning coins
       if (thread.type === "incoming") {
@@ -93,22 +78,14 @@ export default function MessageThread({ thread }) {
       // Mock API call - in a real app, this would call an API
       await new Promise((resolve) => setTimeout(resolve, 1000))
 
-      const updatedThread = {
-        ...thread,
-        status: "rejected",
-        lastMessageAt: new Date().toISOString(),
-        messages: [
-          ...thread.messages,
-          {
-            id: Date.now().toString(),
-            sender: "system",
-            text: "Request rejected.",
-            timestamp: new Date().toISOString(),
-          },
-        ],
+      const systemMessage = {
+        id: Date.now().toString(),
+        sender: "system",
+        text: "Request rejected.",
+        timestamp: new Date().toISOString(),
       }
 
-      updateMessageThread(updatedThread)
+      addMessageToThread(thread.id, systemMessage)
     } catch (error) {
       console.error("Error rejecting request:", error)
     } finally {

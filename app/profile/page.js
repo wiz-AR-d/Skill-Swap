@@ -47,7 +47,12 @@ export default function ProfilePage() {
           )}
         </div>
         <div className="profile-info">
-          <h1>{user?.name}</h1>
+          <div className="profile-info-header">
+            <h1>{user?.name}</h1>
+            <button className="btn btn-secondary btn-sm" onClick={() => router.push("/profile/edit")}>
+              Edit Profile
+            </button>
+          </div>
           <p className="profile-email">{user?.email}</p>
           <p className="profile-bio">{user?.bio || "No bio yet"}</p>
         </div>
